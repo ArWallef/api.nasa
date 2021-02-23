@@ -62,6 +62,7 @@ class ConsoleCommand extends Command
 
         $psy = new PsyShell();
         $psy->run();
+
     }
 
     /**
@@ -82,5 +83,5 @@ class ConsoleCommand extends Command
         );
 
         return $parser;
-    }
+    }    
 }
