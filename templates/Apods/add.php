@@ -17,6 +17,7 @@
             <fieldset>
                 <legend><?= __('Add Apod') ?></legend>
                 <?php
+                  echo $this->Form->input('date');
                     echo $this->Form->control('copyright');
                     echo $this->Form->control('explanation');
                     echo $this->Form->control('hdurl');

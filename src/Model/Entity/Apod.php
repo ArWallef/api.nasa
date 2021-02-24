@@ -28,6 +28,8 @@ class Apod extends Entity
      *
      * @var array
      */
+     protected $_hidden = [];
+
     protected $_accessible = [
         'date' => true,
         'copyright' => true,
