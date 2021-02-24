@@ -49,13 +49,18 @@ class FetchApodsCommand extends Command
       $http = new Client();
       $response = $http->get('https://api.nasa.gov/planetary/apod', ['api_key' => $api_key]);
 
-      $io->info($response->getStringBody());
+      //$io->info($response->getStringBody());
 
       //debug($response);
 
       $json = $response->getJson();
 
-      debug($json);
+      //debug($json);
 
+      $apods = $this->getTableLocator()->get('Apods');
+
+      $apod = $apods->newEntity($json);
+
+      $apods->save($apod);
     }
 }
