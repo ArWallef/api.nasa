@@ -9,7 +9,7 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Apod Model
+ * Apods Model
  *
  * @method \App\Model\Entity\Apod newEmptyEntity()
  * @method \App\Model\Entity\Apod newEntity(array $data, array $options = [])
@@ -25,7 +25,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Apod[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
  * @method \App\Model\Entity\Apod[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
  */
-class ApodTable extends Table
+class ApodsTable extends Table
 {
     /**
      * Initialize method
@@ -37,7 +37,7 @@ class ApodTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('apod');
+        $this->setTable('apods');
         $this->setDisplayField('title');
         $this->setPrimaryKey('date');
     }

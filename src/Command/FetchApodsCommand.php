@@ -3,10 +3,15 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use DateTime;
+
 use Cake\Command\Command;
 use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
+use Cake\Datasource\ConnectionManager;
+use Cake\Http\Client;
+
 
 /**
  * FetchApods command.
@@ -36,15 +41,20 @@ class FetchApodsCommand extends Command
      */
     public function execute(Arguments $args, ConsoleIo $io)
     {
-      use Cake\Datasource\ConnectionManager;
-      use DateTime;
 
-      $connection = ConnectionManager::get('default');
-      $results = $connection
-          ->execute(
-              'SELECT * FROM apod'
-          )
-          ->fetchAll('assoc');
+      $this->loadModel('Apods');
+
+      $api_key = 'AiCbMHvnhzGdt5lDGOVLVSyXwAAq63uvP2nGbxxE';
+      $http = new Client();
+      $response = $http->get('https://api.nasa.gov/planetary/apod', ['api_key' => $api_key]);
+
+      $io->info($response->getStringBody());
+
+      //debug($response);
+
+      $json = $response->getJson();
+
+      debug($json);
 
     }
 }
