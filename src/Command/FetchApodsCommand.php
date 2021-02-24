@@ -61,6 +61,6 @@ class FetchApodsCommand extends Command
 
       $apod = $apods->newEntity($json);
 
-      $apods->save($apod);
+      $apods->save($apod);      
     }
 }

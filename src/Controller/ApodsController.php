@@ -20,6 +20,8 @@ class ApodsController extends AppController
         $apods = $this->paginate($this->Apods);
 
         $this->set(compact('apods'));
+
+        $this->viewBuilder()->setOption('serialize', ['apods']);
     }
 
     /**
