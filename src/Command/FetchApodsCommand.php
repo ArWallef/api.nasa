@@ -5,6 +5,7 @@ namespace App\Command;
 
 use DateTime;
 
+use Cake\Core\Configure;
 use Cake\Command\Command;
 use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
@@ -44,7 +45,7 @@ class FetchApodsCommand extends Command
 
       $this->loadModel('Apods');
 
-      $api_key = 'AiCbMHvnhzGdt5lDGOVLVSyXwAAq63uvP2nGbxxE';
+      $api_key = Configure::read('Api.NASA');
       $http = new Client();
       $response = $http->get('https://api.nasa.gov/planetary/apod', ['api_key' => $api_key]);
 
