@@ -22,7 +22,9 @@ class ApodsController extends AppController
         $this->set(compact('apods'));
 
         $this->viewBuilder()->setOption('serialize', ['apods']);
+
     }
+
 
     /**
      * View method

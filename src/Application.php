@@ -28,6 +28,7 @@ use Cake\Http\MiddlewareQueue;
 use Cake\ORM\Locator\TableLocator;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use App\Middleware\CORSMiddleware;
 
 /**
  * Application setup class.
@@ -84,7 +85,7 @@ class Application extends BaseApplication
             ->add(new AssetMiddleware([
                 'cacheTime' => Configure::read('Asset.cacheTime'),
             ]))
-
+            ->add(new CORSMiddleware())
             // Add routing middleware.
             // If you have a large number of routes connected, turning on routes
             // caching in production could improve performance. For that when
@@ -102,7 +103,8 @@ class Application extends BaseApplication
             // https://book.cakephp.org/4/en/controllers/middleware.html#cross-site-request-forgery-csrf-middleware
             ->add(new CsrfProtectionMiddleware([
                 'httponly' => true,
-            ]));
+            ])
+          );
 
         return $middlewareQueue;
     }
